@@ -28,11 +28,11 @@ This penguins dataset cotains `r nrow(penguins)` observations and `r ncol(pengui
 
 The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)` mm
 
-```{r scatterplot}
+```{r scatterplot, echo=FALSE, message=FALSE}
 ggplot(penguins, aes(x = bill_length_mm,
                      y=flipper_length_mm,
                      color = species)) +
-  geom_point()
+  geom_point(na.rm = TRUE)
 ggsave("penguin_scatterpoint.png")
 ```
 
