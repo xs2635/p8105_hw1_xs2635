@@ -1,0 +1,28 @@
+---
+title: "p8105_hw1_xs2635"
+author: "Xiaobo Shen"
+date: "2026-09-26"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+data("penguins", package = "palmerpenguins")
+```
+
+# Problem 1
+
+The important variables are `r names(penguins)`
+
+This penguins dataset cotains `r nrow(penguins)` observations and `r ncol(penguins)` variables.
+
+The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)` mm
+
+```{r scatterplot}
+ggplot(penguins, aes(x = bill_length_mm,
+                     y=flipper_length_mm,
+                     color = species)) +
+  geom_point()
+ggsave("penguin_scatterpoint.png")
+```
+
