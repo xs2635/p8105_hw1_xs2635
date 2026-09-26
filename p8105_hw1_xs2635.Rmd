@@ -14,6 +14,16 @@ data("penguins", package = "palmerpenguins")
 
 The important variables are `r names(penguins)`
 
+The penguin species includes `r unique(penguins$species)`.
+
+The islands are `r unique(penguins$island)`.
+
+The recorded sex values are `r unique(penguins$sex)`.
+
+The observation years are `r unique(penguins$year)`
+
+The recorded sex values are `r unique(penguins$sex)`.
+
 This penguins dataset cotains `r nrow(penguins)` observations and `r ncol(penguins)` variables.
 
 The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE)` mm
