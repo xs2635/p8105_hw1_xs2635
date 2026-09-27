@@ -6,7 +6,7 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE}
-library(ggplot2)
+library(tidyverse)
 data("penguins", package = "palmerpenguins")
 ```
 
@@ -36,3 +36,32 @@ ggplot(penguins, aes(x = bill_length_mm,
 ggsave("penguin_scatterpoint.png")
 ```
 
+
+# Problem 2
+```{r}
+x = tibble(
+  num_var = rnorm(10),
+  log_var = num_var > 0,
+  char_var = c("a", "b", "c", "d", "e",
+               "f", "g", "h", "i", "j"),
+  factor_var = factor(c(
+    "level1", "level2", "level3",
+    "level1", "level2", "level3",
+    "level1", "level2", "level3", "level1"
+  ))
+)
+```
+```{r}
+mean(pull(x,num_var))
+mean(pull(x,log_var))
+mean(pull(x,char_var))
+mean(pull(x,factor_var))
+```
+Mean can be calculated for numeric and logical variables, but character and factor variables return NA
+
+```{r, results='hide', warning=FALSE}
+as.numeric(pull(x, log_var))
+as.numeric(pull(x, char_var))
+as.numeric(pull(x, factor_var))
+```
+True and False in logical variables are converted to 1 and 0, but Character variables return NA because letters cannot be converted to numbers. For the factor variable, their underlying integers can also be converted.
